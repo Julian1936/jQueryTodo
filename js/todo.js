@@ -1,19 +1,28 @@
-jQuery(document).on('click', '#add-task-btn', function(){
-    var taskToAdd = jQuery('#add-task').val();
-    var dataTaskName = taskToAdd.replace(/\s+/g, '-').toLowerCase();
-    if(taskToAdd != '') {
-        jQuery('#task-list').append('<li data-task_name="'+dataTaskName+'"><span class="task-name">'+taskToAdd+'</span> <span class="task-btn complete-task">Done</span><span id="'+dataTaskName+'" class="task-btn remove-task">Remove Task</span></li>');
-    	jQuery('#add-task').val('');
-    } else {
+var $taskInput = $('#task-input');
+var $taskList = $('#task-list');
+var $tasksCompleteList = $('#tasks-completed');
+
+$(document).on('click', '#add-task-btn', function(){
+    var taskText = $taskInput.val();
+    if (taskText === '') {
         alert('No task entered');
+        return;
     }
+    var $task = $('<li />');
+    $('<span />', { class: 'task-name' }).text(taskText).appendTo($task);
+    $('<span />', { class: 'task-btn complete-task' }).text('Done').appendTo($task);
+    $('<span />', { class: 'task-btn remove-task' }).text('Remove task').appendTo($task);
+
+    $taskList.append($task);
+    $taskInput.val('');
+
+    console.log($taskList.html());
 });
 
-jQuery(document).on('click', '.complete-task', function(){
-    jQuery(this).text('Task Complete');
+$(document).on('click', '.complete-task', function(){
+    $(this).text('Task Complete');
 });
 
-jQuery(document).on('click', '.remove-task', function(){
-	var dataName = jQuery(this).attr('id');
-	jQuery('li[data-task_name="'+dataName+'"]').remove();
+$(document).on('click', '.remove-task', function(){
+    $(this).parent('li').remove();
 });

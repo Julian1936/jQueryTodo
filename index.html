@@ -14,13 +14,18 @@
     <h1>jQuery ToDo</h1>
 
     <div id="add-task-wrapper">
-        <input id="add-task" type="text" placeholder="Add a new task...">
+        <input id="task-input" type="text" placeholder="Add a new task...">
         <button id="add-task-btn">Add Task</button>
     </div>
 
-    <div id="task-list-wrapper">
+    <div class="task-list-wrapper">
         <h2>Task List</h2>
         <ul id="task-list"></ul>
+    </div>
+
+    <div class="task-list-wrapper">
+        <h2>Task Completed</h2>
+        <ul id="tasks-completed"></ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
